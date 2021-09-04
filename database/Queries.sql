@@ -1,7 +1,6 @@
-DROP TABLE Passports;
-DROP TABLE Employees;
-DROP TABLE Departments;
-
+CREATE DATABASE sw_test;
+GO
+USE sw_test;
 CREATE TABLE Departments (
   Id INT IDENTITY(1,1) PRIMARY KEY,
   Name VARCHAR(100),
