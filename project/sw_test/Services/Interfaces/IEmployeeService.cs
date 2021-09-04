@@ -8,11 +8,11 @@ namespace sw_test.Services.Interfaces
 {
     public interface IEmployeeService
     {
-        int Create(Employee test);
+        int Create(Employee employee);
         void Delete(int id);
         Employee Get(int id);
         IEnumerable<Employee> GetByCompanyId(int id);
         IEnumerable<Employee> GetByDepartmentId(int id);
-        Employee Update(Employee test);
+        Employee Update(Employee employee);
     }
 }
