@@ -9,16 +9,26 @@ namespace sw_test.Controllers
     public class EmployeeController : ControllerBase
     {
         private readonly IEmployeeService _employeeService;
+        private readonly IDepartementService _departementService;
 
-        public EmployeeController(IEmployeeService employeeService)
+        public EmployeeController(IEmployeeService employeeService,IDepartementService departementService)
         {
             _employeeService = employeeService;
+            _departementService = departementService;
         }
         [HttpPost]
         public IActionResult Create([FromBody] Employee employee)
         {
             try
             {
+                if (employee.DepartmentId == 0)
+                {
+                    return BadRequest(new { error = "Не указан DepartmentId" });
+                }
+                else if (_departementService.Get(employee.DepartmentId) == null)
+                {
+                    return BadRequest(new { error = "Неверный DepartmentId, такого отдела не существует", departments= _departementService.GetAll() });
+                }
                 return Ok(new { id =_employeeService.Create(employee) });
             }
             catch
@@ -81,6 +91,10 @@ namespace sw_test.Controllers
                 else if (_employeeService.Get(employee.Id) == null)
                 {
                     return BadRequest(new { error = "Сотрудника с таким Id не существует" });
+                } 
+                else if (_departementService.Get(employee.DepartmentId) == null)
+                {
+                    return BadRequest(new { error = "Неверный DepartmentId, такого отдела не существует", departments = _departementService.GetAll() });
                 }
                 return Ok("Сотрудник с id "+_employeeService.Update(employee).Id+" изменен");
             }

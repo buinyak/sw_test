@@ -30,6 +30,8 @@ namespace sw_test
         { 
             services.AddTransient<IEmployeeRepository, EmployeeRepository>();
             services.AddTransient<IEmployeeService, EmployeeService>();
+            services.AddTransient<IDepartmentRepository, DepartmentRepository>();
+            services.AddTransient<IDepartementService, DepartmentService>();
             services.AddControllers();
         }
 

@@ -8,11 +8,11 @@ namespace sw_test.Repositories.Interfaces
 {
     public interface IEmployeeRepository
     {
-        Employee Create(Employee test);
+        Employee Create(Employee employee);
         void Delete(int id);
         Employee Get(int id);
         IEnumerable<Employee> GetByCompanyId(int id);
         IEnumerable<Employee> GetByDepartmentId(int id);
-        Employee Update(Employee test);
+        Employee Update(Employee employee);
     }
 }

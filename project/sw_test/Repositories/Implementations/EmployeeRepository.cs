@@ -96,8 +96,8 @@ namespace sw_test.Repositories.Implementations
             if (employee.Name != null) { sqlQuery += "Name = @Name,"; }
             if (employee.Surname != null) { sqlQuery += "Surname = @Surname,"; }
             if (employee.Phone != null) { sqlQuery += "Phone = @Phone,"; }
-            if (employee.CompanyId != null) { sqlQuery += "CompanyId = @CompanyId,"; }
-            if (employee.DepartmentId != null) { sqlQuery += "DepartmentId = @DepartmentId"; }
+            if (employee.CompanyId != 0) { sqlQuery += "CompanyId = @CompanyId,"; }
+            if (employee.DepartmentId != 0) { sqlQuery += "DepartmentId = @DepartmentId"; }
             if (sqlQuery.EndsWith(',')) { sqlQuery.Substring(0, sqlQuery.Length - 1); }
             sqlQuery += " WHERE Id = @id";
 
